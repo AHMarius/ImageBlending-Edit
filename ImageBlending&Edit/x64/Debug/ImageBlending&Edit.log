@@ -1,0 +1,10 @@
+﻿  ImageBlending&Edit.cpp
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(163,28): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(163,28): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(163,38): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(163,38): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(164,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Marius\source\repos\ImageBlending&Edit\ImageBlending&Edit\ImageBlending&Edit.cpp(164,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  ImageBlending&Edit.vcxproj -> C:\Users\Marius\source\repos\ImageBlending&Edit\x64\Debug\ImageBlending&Edit.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
