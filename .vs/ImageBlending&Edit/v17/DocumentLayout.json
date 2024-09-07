@@ -7,6 +7,21 @@
       "RelativeMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|solutionrelative:ImageBlending\u0026Edit\\ImageBlending\u0026Edit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES2.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|solutionrelative:ImageBlending\u0026Edit\\MARBLES2.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|solutionrelative:ImageBlending\u0026Edit\\MARBLES.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\sample1.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|solutionrelative:ImageBlending\u0026Edit\\sample1.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\EasyBMP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2B33EB70-567F-4F4F-86B3-CDB2482848A4}|ImageBlending\u0026Edit\\ImageBlending\u0026Edit.vcxproj|solutionrelative:ImageBlending\u0026Edit\\EasyBMP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -22,11 +37,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "delete_scalar.cpp",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-07T16:42:12.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MARBLES2.bmp",
+              "DocumentMoniker": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES2.bmp",
+              "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\MARBLES2.bmp",
+              "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES2.bmp",
+              "RelativeToolTip": "ImageBlending\u0026Edit\\MARBLES2.bmp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-06T17:22:20.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "sample1.bmp",
+              "DocumentMoniker": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\sample1.bmp",
+              "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\sample1.bmp",
+              "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\sample1.bmp",
+              "RelativeToolTip": "ImageBlending\u0026Edit\\sample1.bmp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-06T17:22:15.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MARBLES.bmp",
+              "DocumentMoniker": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES.bmp",
+              "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\MARBLES.bmp",
+              "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\MARBLES.bmp",
+              "RelativeToolTip": "ImageBlending\u0026Edit\\MARBLES.bmp",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-06T17:22:04.453Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -36,34 +96,36 @@
               "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\ImageBlending\u0026Edit.cpp",
               "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit.cpp",
               "RelativeToolTip": "ImageBlending\u0026Edit\\ImageBlending\u0026Edit.cpp",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAAALgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFkBAAAAAAAAAAAAAGEBAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-29T13:09:54.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "EasyBMP.h",
               "DocumentMoniker": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\EasyBMP.h",
               "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\EasyBMP.h",
               "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\EasyBMP.h",
               "RelativeToolTip": "ImageBlending\u0026Edit\\EasyBMP.h",
-              "ViewState": "AgIAADkAAAAAAAAAAAAqwFYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-03T18:44:17.404Z"
+              "WhenOpened": "2024-09-03T18:44:17.404Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "EasyBMP.cpp",
               "DocumentMoniker": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\EasyBMP.cpp",
               "RelativeDocumentMoniker": "ImageBlending\u0026Edit\\EasyBMP.cpp",
               "ToolTip": "C:\\Users\\Marius\\source\\repos\\ImageBlending\u0026Edit\\ImageBlending\u0026Edit\\EasyBMP.cpp",
               "RelativeToolTip": "ImageBlending\u0026Edit\\EasyBMP.cpp",
-              "ViewState": "AgIAAKQGAAAAAAAAAAAgwOcGAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAF8HAAAAAAAAAAAAAOcGAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-03T10:02:25.347Z"
+              "WhenOpened": "2024-09-03T10:02:25.347Z",
+              "EditorCaption": ""
             }
           ]
         }

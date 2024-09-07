@@ -137,6 +137,11 @@
     <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Dog1.bmp" />
+    <Image Include="Flower1.bmp" />
+    <Image Include="Flower2.bmp" />
+    <Image Include="Flower3.bmp" />
+    <Image Include="Flower4.bmp" />
     <Image Include="MARBLES.bmp" />
     <Image Include="MARBLES2.bmp" />
     <Image Include="sample1 (1).bmp" />

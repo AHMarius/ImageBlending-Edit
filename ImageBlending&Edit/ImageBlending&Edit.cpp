@@ -4,7 +4,7 @@
 #include<cmath>
 #include <cstring>
 
-const int IMG_NUMBER = 2;
+const int IMG_NUMBER = 3;
 struct TextTimer {
 	const char* str;
 	unsigned char time;
@@ -61,14 +61,15 @@ struct Sprite {
 				float gray = PixelMap[i][j].r + PixelMap[i][j].g + PixelMap[i][j].b;
 				//std::cout << gray << " " << i << " " << j << "\n";
 				// Apply threshold for binary conversion
-				if (gray >= 2.0f) {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = 1;
+				if (gray <= 1.5f) {
+					pixelMapVar[i][j].r = 0.0f;   // Red channel
+					pixelMapVar[i][j].g = 0.0f;   // Green channel
+					pixelMapVar[i][j].b = 0.502f; // Blue channel
 				}
-				else if (gray <= 1.0f) {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = 0;
-				}
-				else {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = gray - 1.0f;
+				else if (gray >= 1.5f) {
+					pixelMapVar[i][j].r = 1.0f;     // Red channel
+					pixelMapVar[i][j].g = 0.843f;   // Green channel
+					pixelMapVar[i][j].b = 0.0f;     // Blue channel
 				}
 				pixelMapVar[i][j].a = PixelMap[i][j].a;  // Preserve the alpha channel
 			}
@@ -76,7 +77,44 @@ struct Sprite {
 
 		return pixelMapVar;
 	}
-	pixel** ToCONTOUR() {
+	pixel** ToGrayscale() {
+		// Allocate memory for the new grayscale pixel map
+		pixel** pixelMapVar = new(std::nothrow) pixel * [w];
+		if (!pixelMapVar) {
+			std::cerr << "Memory allocation failed for PixelMap." << std::endl;
+			exit(1);
+		}
+
+		for (int i = 0; i < w; ++i) {
+			pixelMapVar[i] = new(std::nothrow) pixel[h];
+			if (!pixelMapVar[i]) {
+				std::cerr << "Memory allocation failed for PixelMap row." << std::endl;
+				// Cleanup previously allocated memory before exiting
+				for (int k = 0; k < i; ++k) {
+					delete[] pixelMapVar[k];
+				}
+				delete[] pixelMapVar;
+				exit(1);
+			}
+		}
+
+		// Convert to grayscale
+		for (int i = 0; i < w; ++i) {
+			for (int j = 0; j < h; ++j) {
+				// Calculate grayscale value using luminance formula
+				float gray = 0.299f * PixelMap[i][j].r + 0.587f * PixelMap[i][j].g + 0.114f * PixelMap[i][j].b;
+
+				// Set grayscale value for r, g, and b
+				pixelMapVar[i][j].r = gray;
+				pixelMapVar[i][j].g = gray;
+				pixelMapVar[i][j].b = gray;
+				pixelMapVar[i][j].a = PixelMap[i][j].a;  // Preserve the alpha channel
+			}
+		}
+
+		return pixelMapVar;
+	}
+	pixel** ToRandFilter() {
 		// Allocate memory for the new black and white pixel map
 		pixel** pixelMapVar = new(std::nothrow) pixel * [w];
 		if (!pixelMapVar) {
@@ -100,20 +138,93 @@ struct Sprite {
 		// Convert to black and white
 		for (int i = 0; i < w; ++i) {
 			for (int j = 0; j < h; ++j) {
-				// Calculate grayscale value
-				float gray = PixelMap[i][j].r + PixelMap[i][j].g + PixelMap[i][j].b;
-				//std::cout << gray << " " << i << " " << j << "\n";
+				float difference = std::abs(PixelMap[i][j - 1].r + PixelMap[i][j - 1].g + PixelMap[i][j - 1].b - PixelMap[i][j].r - PixelMap[i][j].g - PixelMap[i][j].b);
 				// Apply threshold for binary conversion
-				if (gray >= 2.0f) {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = 1;
-				}
-				else if (gray <= 1.0f) {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = 0;
+				if (difference > 0.005f) {
+					pixelMapVar[i][j].r = 0.0f;     // Red channel
+					pixelMapVar[i][j].g = 0.0;   // Green channel
+					pixelMapVar[i][j].b = 0.0f;   // Blue channel
 				}
 				else {
-					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = gray - 1.0f;
+					pixelMapVar[i][j].r = pixelMapVar[i][j].g = pixelMapVar[i][j].b = 1;
 				}
 				pixelMapVar[i][j].a = PixelMap[i][j].a;  // Preserve the alpha channel
+			}
+		}
+
+		return pixelMapVar;
+	}
+	pixel** toSobelEdgeDetection() {
+		// Allocate memory for the new pixel map for storing Sobel edge detection output
+		pixel** pixelMapVar = new(std::nothrow) pixel * [w];
+		if (!pixelMapVar) {
+			std::cerr << "Memory allocation failed for PixelMap." << std::endl;
+			exit(1);
+		}
+
+		for (int i = 0; i < w; ++i) {
+			pixelMapVar[i] = new(std::nothrow) pixel[h];
+			if (!pixelMapVar[i]) {
+				std::cerr << "Memory allocation failed for PixelMap row." << std::endl;
+				// Cleanup previously allocated memory before exiting
+				for (int k = 0; k < i; ++k) {
+					delete[] pixelMapVar[k];
+				}
+				delete[] pixelMapVar;
+				exit(1);
+			}
+		}
+
+		// Sobel operator kernels for x and y gradients
+		int Gx[3][3] = {
+			{ -1, 0, 1 },
+			{ -2, 0, 2 },
+			{ -1, 0, 1 }
+		};
+		int Gy[3][3] = {
+			{ -1, -2, -1 },
+			{ 0, 0, 0 },
+			{ 1, 2, 1 }
+		};
+
+		// Apply Sobel operator
+		for (int i = 1; i < w - 1; ++i) {
+			for (int j = 1; j < h - 1; ++j) {
+				float gradX = 0.0f;
+				float gradY = 0.0f;
+
+				// Compute gradients in the x and y directions
+				for (int k = -1; k <= 1; ++k) {
+					for (int l = -1; l <= 1; ++l) {
+						float intensity = 0.299f * PixelMap[i + k][j + l].r + 0.587f * PixelMap[i + k][j + l].g + 0.114f * PixelMap[i + k][j + l].b;
+						gradX += Gx[k + 1][l + 1] * intensity;
+						gradY += Gy[k + 1][l + 1] * intensity;
+					}
+				}
+
+				// Calculate the magnitude of the gradient
+				float magnitude = sqrt(gradX * gradX + gradY * gradY);
+
+				// Normalize the magnitude to the range [0, 1]
+				float normalizedMagnitude = magnitude / 4.0f;  // Max possible value is 4 for Sobel
+
+				// Set pixel color based on the magnitude
+				if (normalizedMagnitude > 0.0f) {
+					// Edge detected - set to a nuance of gold
+					// Adjust the intensity of gold based on the magnitude
+					pixelMapVar[i][j].r = 1.0f * normalizedMagnitude;     // Red component of gold
+					pixelMapVar[i][j].g = 0.843f * normalizedMagnitude;   // Green component of gold
+					pixelMapVar[i][j].b = 0.0f;                          // Blue component stays 0
+				}
+				else {
+					// No edge - set to dark red
+					pixelMapVar[i][j].r = 0.0f;  // Red channel for dark red
+					pixelMapVar[i][j].g = 0.0f;    // Green channel for dark red
+					pixelMapVar[i][j].b = 0.0f;    // Blue channel for dark red
+				}
+
+				// Preserve the alpha channel
+				pixelMapVar[i][j].a = PixelMap[i][j].a;
 			}
 		}
 
@@ -217,10 +328,9 @@ Sprite AlphaBlending(Sprite sprite[]) {
 	return spriteVar;
 }
 
-
 void DrawSprite(pixel** pixelMap, Vector2i outputSize, Sprite sprite[], TextTimer Extra) {
-	for (int i = 0; i < outputSize.x; ++i) {
-		for (int j = 0; j < outputSize.y; ++j) {
+	for (int i = 0; i < outputSize.x - 1; ++i) {
+		for (int j = 0; j < outputSize.y - 1; ++j) {
 			Color pixelColor = BLACK; // Default color to black
 
 			pixelColor.r = static_cast<unsigned char>(pixelMap[i][j].r * 255);
@@ -238,11 +348,10 @@ void DrawSprite(pixel** pixelMap, Vector2i outputSize, Sprite sprite[], TextTime
 	for (int i = 0; i < IMG_NUMBER; i++) {
 		DrawText(TextFormat("Sprite %i: \n width: %i\n height: %i\n alpha value: %f", i, sprite[i].w, sprite[i].h, sprite[i].PixelMap[1][1].a * 255), (int)outputSize.x - 100, 60 * i + 10, 10, WHITE);
 	}
-
 }
 
 void ScreenOutput(Sprite sprite[], Sprite& finalSprite) {
-	bool img_efx[] = { false };
+	bool img_efx[] = { false/*Black&White B*/,false/*Grayscale G*/,false/*Extra S*/,false/*Sobel Edge Detection E*/ };
 	TextTimer Extra;
 	unsigned char img_num = 0;
 	unsigned char alpha_val = 100;
@@ -290,8 +399,21 @@ void ScreenOutput(Sprite sprite[], Sprite& finalSprite) {
 			img_efx[0] = !img_efx[0];
 			Extra = TextTimer{ (img_efx[0]) ? "B&W filter has been enabled" : "B&W filter has been disabled", 100 };
 			actionOccurred = true;
+		}if (IsKeyDown(KEY_G)) {
+			img_efx[1] = !img_efx[1];
+			Extra = TextTimer{ (img_efx[1]) ? "Grayscale filter has been enabled" : "Grayscale filter has been disabled", 100 };
+			actionOccurred = true;
 		}
-
+		if (IsKeyDown(KEY_S)) {
+			img_efx[2] = !img_efx[2];
+			Extra = TextTimer{ (img_efx[2]) ? "Rand filter has been enabled" : "Rand filter has been disabled", 100 };
+			actionOccurred = true;
+		}
+		if (IsKeyDown(KEY_E)) {
+			img_efx[3] = !img_efx[3];
+			Extra = TextTimer{ (img_efx[3]) ? "Sobel Edge Detectionfilter has been enabled" : "Sobel Edge Detection filter has been disabled", 100 };
+			actionOccurred = true;
+		}
 		// Reset the text if no action occurred
 		if (!actionOccurred && Extra.time == 0) {
 			Extra.str = "";  // Reset to an empty string
@@ -303,6 +425,15 @@ void ScreenOutput(Sprite sprite[], Sprite& finalSprite) {
 		if (img_efx[0]) {
 			DrawSprite(finalSprite.ToBW(), outputSize, sprite, Extra);
 		}
+		else if (img_efx[1]) {
+			DrawSprite(finalSprite.ToGrayscale(), outputSize, sprite, Extra);
+		}
+		else if (img_efx[2]) {
+			DrawSprite(finalSprite.ToRandFilter(), outputSize, sprite, Extra);
+		}
+		else if (img_efx[3]) {
+			DrawSprite(finalSprite.toSobelEdgeDetection(), outputSize, sprite, Extra);
+		}
 		else {
 			DrawSprite(finalSprite.PixelMap, outputSize, sprite, Extra);
 		}
@@ -313,20 +444,27 @@ void ScreenOutput(Sprite sprite[], Sprite& finalSprite) {
 	CloseWindow();
 }
 
-
 int main() {
 	Sprite sprite[IMG_NUMBER];
 	Sprite outputSprite;
 	BMP imageFile[IMG_NUMBER];
-
-	if (!imageFile[0].ReadFromFile("MARBLES.bmp")) {
-		std::cerr << "Error: Could not open the image file MARBLES.bmp!" << std::endl;
+	if (!imageFile[0].ReadFromFile("Marbles.bmp")) {
+		std::cerr << "Error: Could not open the image file Dog1.bmp!" << std::endl;
 		return 1;
 	}
 	if (!imageFile[1].ReadFromFile("sample1.bmp")) {
-		std::cerr << "Error: Could not open the image file sample1.bmp!" << std::endl;
+		std::cerr << TextFormat("Error: Could not open the image file Flower%i.bmp", 1) << std::endl;
 		return 1;
 	}
+	if (!imageFile[2].ReadFromFile("sample3.bmp")) {
+		std::cerr << TextFormat("Error: Could not open the image file Flower%i.bmp", 1) << std::endl;
+		return 1;
+	}
+	//for (int i = 1; i < IMG_NUMBER; i++)
+	//	if (!imageFile[i].ReadFromFile(TextFormat("Flower%i.bmp", i))) {
+	//		std::cerr << TextFormat("Error: Could not open the image file Flower%i.bmp", i) << std::endl;
+	//		return 1;
+	//	}
 
 	for (int i = 0; i < IMG_NUMBER; i++) {
 		sprite[i].w = imageFile[i].TellWidth();

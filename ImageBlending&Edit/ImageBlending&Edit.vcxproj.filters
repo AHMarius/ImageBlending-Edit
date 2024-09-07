@@ -73,5 +73,20 @@
     <Image Include="MARBLES2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Dog1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Flower1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Flower2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Flower3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Flower4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
